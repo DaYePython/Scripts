@@ -5,9 +5,7 @@ var act = "com.taobao.browser.BrowserActivity";
 var actCom = "android.widget.FrameLayout";
 var actDepth = 3;
 var actIndexInParent = 1;
-var taskBtn = "android.widget.Button";
-var taskDepth = 14;
-var taskIndexInParent = 5;
+var taskText = "领喵币"
 var view = "android.view.View";
 var editText = "android.widget.EditText";
 var editDepth = 2;
@@ -104,20 +102,13 @@ function UI() {
         },
         {
             id: "card1",
-            title: "领喵币",
-            className: taskBtn,
-            depth: taskDepth,
-            indexInParent: taskIndexInParent
-        },
-        {
-            id: "card2",
             title: "搜索页搜索框",
             className: editText,
             depth: editDepth,
             indexInParent: editIndexInParent
         },
         {
-            id: "card3",
+            id: "card2",
             title: "首页按钮",
             className: homeBtn,
             depth: homeDepth,
@@ -133,15 +124,12 @@ function UI() {
         actCom = update("card0", "classname");
         actDepth = update("card0", "depth");
         actIndexInParent = update("card0", "indexInParent");
-        taskBtn = update("card1", "classname");
-        taskDepth = update("card1", "depth");
-        taskIndexInParent = update("card1", "indexInParent");
-        editText = update("card2", "classname");
-        editDepth = update("card2", "depth");
-        editIndexInParent = update("card2", "indexInParent");
-        homeBtn = update("card3", "classname");
-        homeDepth = update("card3", "depth");
-        homeIndexInParent = update("card3", "indexInParent");
+        editText = update("card1", "classname");
+        editDepth = update("card1", "depth");
+        editIndexInParent = update("card1", "indexInParent");
+        homeBtn = update("card2", "classname");
+        homeDepth = update("card2", "depth");
+        homeIndexInParent = update("card2", "indexInParent");
         saveConf();
     });
 }
@@ -151,7 +139,6 @@ function saveConf() {
     var writer = open(confFile, "w", "utf-8");
     writer.writeline("记录时间：" + new Date().getTime());
     writer.writeline("双11合伙人：" + actCom + "," + actDepth + "," + actIndexInParent);
-    writer.writeline("领喵币：" + taskBtn + "," + taskDepth + "," + taskIndexInParent);
     writer.writeline("搜索页搜索框：" + editText + "," + editDepth + "," + editIndexInParent);
     writer.writeline("首页按钮：" + homeBtn + "," + homeDepth + "," + homeIndexInParent);
     writer.flush();
@@ -175,11 +162,6 @@ function loadConf() {
                     actCom = vs[0];
                     actDepth = vs[1];
                     actIndexInParent = vs[2];
-                    break;
-                case "领喵币":
-                    taskBtn = vs[0];
-                    taskDepth = vs[1];
-                    taskIndexInParent = vs[2];
                     break;
                 case "搜索页搜索框":
                     editText = vs[0];
@@ -257,30 +239,10 @@ function goAct() {
         log("状态：进入活动页面中..");
         log("提示：如进错页面，请检查组件");
     }
-    var subThread = timeout(8000, currentActivity(), "组件{上限}不可见，请手动进入活动页");
-    textContains("上限").waitFor();
+    var subThread = timeout(8000, currentActivity(), "组件{领喵币}不可见，请手动进入活动页");
+    textContains(taskText).waitFor();
     subThread.interrupt();
     log("状态：已进入活动页面");
-}
-
-function collectCoin(tar) {
-    var obj = textContains(tar);
-    if (obj.exists()) {
-        log("准备：领取" + tar + "金币");
-        sleep(500);
-        rectClick(obj.findOne().bounds());
-        log("状态：金币领取成功");
-        sleep(1000);
-    }
-}
-
-function collectDouble() {
-    collectCoin("上限");
-    sleep(1000);
-    if (text("翻倍领取").exists()) {
-        log("准备：金币翻倍领取");
-        doTask("翻倍领取");
-    }
 }
 
 function doTask(tar) {
@@ -289,9 +251,6 @@ function doTask(tar) {
         log("状态：正在执行" + tar);
         obj.findOne().click();
         switch (tar) {
-            case "翻倍领取":
-                wait(24, findComponent(view, "", "观看完成", "", ""));
-                break;
             case "去查看":
                 wait(8, findComponent(view, "", "", "", ""));
                 break;
@@ -434,33 +393,18 @@ function wait(limit) {
     }
 }
 
-function sudden() {
-    sleep(1000);
-    var obj = textContains("关闭");
-    if (obj.exists()) {
-        log("状态：意外情况，已进行处理");
-        obj.findOne().click();
-    }
-}
-
 function toCollect() {
-    collectDouble();
-    sudden();
     log("准备：执行活动任务..");
-    findComponent(taskBtn, taskDepth, "", taskIndexInParent, true).findOne().click();
+    textContains(taskText).findOne().click();
     sleep(3000);
     log("准备：执行签到");
     sign("签到");
-    collectDouble();
     log("准备：执行去浏览");
     doTask("去浏览");
-    collectDouble();
     log("准备：执行去查看");
     doTask("去查看");
-    collectDouble();
     log("准备：执行去进店");
     doTask("去进店");
-    collectDouble();
     log("准备：执行去签到");
     sign("去签到");
     log("准备：执行去浏览");
