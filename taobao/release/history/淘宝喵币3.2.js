@@ -192,9 +192,9 @@ function loadConf() {
                     editIndexInParent = vs[2];
                     break;
                 case "首页按钮":
-                    taskBtn = vs[0];
-                    taskDepth = vs[1];
-                    taskIndexInParent = vs[2];
+                    homeBtn = vs[0];
+                    homeDepth = vs[1];
+                    homeIndexInParent = vs[2];
                     break;
             }
         }
