@@ -1,8 +1,10 @@
 # 淘宝脚本
 欢迎反馈脚本使用问题，兼容安卓6.0
 ## 淘宝喵币
+
 #### 主要功能  
 自动点按式完成淘宝喵币收集，第三方工具 [Autojs](apk)
+
 #### 重要信息
 《[新版流程](./custom/log_3.0.txt)》 《[旧版流程](./custom/log.txt)》 《[组件定制](./custom)》 
 
@@ -28,7 +30,7 @@
   * 修复任务完成不跳转
   * 修正提示信息准确性
   * 更加灵活，组件定制
-* 《[淘宝喵币3.0.1](./release/history/淘宝喵币3.0.1.js)》 《[淘宝喵币3.1](./release/history/淘宝喵币3.1.js)》 《[淘宝喵币3.2](./release/history/淘宝喵币3.2.js)》
+* 《[淘宝喵币3.0.1](./release/history/淘宝喵币3.0.1.js)》 《[淘宝喵币3.1](./release/history/淘宝喵币3.1.js)》 《[淘宝喵币3.2](./release/history/淘宝喵币3.2.js)》 《[淘宝喵币3.3](./release/history/淘宝喵币3.3.js)》
   * 定制组件，操作难度增加
   * 增加30个店铺签到功能
   * 界面启用UI设计
@@ -40,21 +42,23 @@
   * 更新提示，任务耗时统计
   * 新增店铺浏览滑动操作(仅安卓**7.0以上**设备)
   * **新特性即开即用**
+  * 删除冗余代码
+  * 新增[测试模块](./test)
+  * 修复定制组件加载问题
+* 《[淘宝喵币4.0](./release/history/淘宝喵币4.0.js)》
+  * 基本实现了全自动化
+  * [测试模块](./test)更新
+  * 定制界面优化
+  * 可以使用默认配置
+
 #### 温馨提示
 1. 使用过程中有一定的延时，可自行调整 <kdb> sleep() </kbd> 参数
 2. 操作均由脚本自动跳转设置，勿自行切换页面
 3. 如果页面长时间未反应，可自行进入活动页
-4. 操作完成后会有提示，如果有提示未进行任务则不兼容 
 5. **不能运行请按提示注释代码** 
 #### 致谢
-@[DaYePython](https://github.com/DaYePython) 提供解决方案
-#### 使用教程
-1. 安装软件 [Autojs](apk)  
 Autojs是一款安卓脚本自动化模拟用户点按操作apk
 2. 导入js  
 下载 [js](release) 脚本导入到Autojs中，点击运行即可。
 3. 脚本效果   
-<img src="picture/use1.x.gif" alt="使用1.x" width="24%" />
-<img src="picture/use2.x.gif" alt="使用2.x" width="24%" />
-<img src="picture/use3.x.gif" alt="使用3.x" width="24%" />
-<img src="picture/use_sign3.x.gif" alt="店铺签到3.x" width="24%" />
+<img src="picture/use1.x.gif" alt="使用1.x" width="24%" /> <img src="picture/use2.x.gif" alt="使用2.x" width="24%" /> <img src="picture/use3.x.gif" alt="使用3.x" width="24%" /> <img src="picture/use_sign3.x.gif" alt="店铺签到3.x" width="24%" />
