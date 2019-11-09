@@ -1,3 +1,4 @@
+
 "ui";
 auto.waitFor();
 var app = "com.taobao.taobao";
@@ -252,9 +253,9 @@ function goAct() {
         log("状态：进入活动页面中..");
         log("提示：如进错页面，请检查组件");
     }
-    var subThread = timeout(8000, currentActivity(), "组件{上限}不可见，请手动进入活动页");
-    textContains("上限").waitFor();
-    subThread.interrupt();
+    // var subThread = timeout(8000, currentActivity(), "组件{上限}不可见，请手动进入活动页");
+    // textContains("上限").waitFor();
+    // subThread.interrupt();
     log("状态：已进入活动页面");
 }
 
