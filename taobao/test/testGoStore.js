@@ -1,3 +1,10 @@
+/*
+ * @Description: 
+ * @Author: daye
+ * @Date: 2019-11-10 07:54:24
+ * @LastEditTime: 2019-11-10 23:46:56
+ * @LastEditors: daye
+ */
 var view = "android.view.View";
 
 function rectClick(obj) {

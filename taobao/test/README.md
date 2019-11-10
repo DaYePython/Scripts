@@ -5,6 +5,9 @@
 ### 测试模块版本
 * [testModel1.1](./testModel1.1.js)
 * [testModel](./history/testModel.js)
+* [testFindComponent](./testFindComponent.js)
+* [testGostore](./testGostore.js)
+* [testGoHome](./testGoHome.js)
 
 ### 主要组件
 * 淘宝首页
